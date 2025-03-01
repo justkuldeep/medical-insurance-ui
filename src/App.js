@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 
@@ -92,10 +92,30 @@ const ClaimSubmission = () => {
 };
 
 const ClaimsList = () => {
-  const claims = [
-    { id: 1, status: "Approved", date: "2025-02-20" },
+  const [claims, setClaims] = useState([
+    { id: 1, status: "Pending", date: "2025-02-20" },
     { id: 2, status: "Pending", date: "2025-02-18" },
-  ];
+  ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setClaims((prevClaims) =>
+        prevClaims.map((claim) =>
+          claim.status === "Pending" ? { ...claim, status: "Processing" } : claim
+        )
+      );
+      setTimeout(() => {
+        setClaims((prevClaims) =>
+          prevClaims.map((claim) =>
+            claim.status === "Processing" ? { ...claim, status: "Approved" } : claim
+          )
+        );
+      }, 5000);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="container">
       <h1>My Claims</h1>
