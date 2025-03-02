@@ -52,7 +52,7 @@ npm start
 We welcome contributions! Feel free to fork the repo, create a feature branch, and submit a PR.
 
 ## 📞 Contact
-For queries, reach out at: [Your Email/Discord/GitHub Discussions]
+For queries, reach out at: [kuldeepsoni98938@gmail.com/Discord/GitHub Discussions]
 
 🚀 *Transforming Insurance Claims for a Smarter Future!*
 
